@@ -1,0 +1,58 @@
+CREATE PROCEDURE `atualizarSalario` (codigo int, salario int)
+
+BEGIN
+
+	
+	declare verifica_salario int;
+    
+	declare msg VARCHAR(50);   
+    
+    
+	if(codigo > 0 and salario <>'') then 
+		
+		set verifica_salario = av5.funcionario(select (fSalario) where fCodigo equals codigo);
+    	end if;
+  
+	if(salario > verifica_salario) then
+   
+		set msg = 'Operação bem sucedida';
+
+    	else set msg = 'Operação falhou';           
+    
+	end if;
+    
+
+END
+
+
+CREATE FUNCTION `calculaMedia` (n1 int, n2 int, n3 int)
+RETURNS INTEGER
+
+BEGIN
+
+	
+	declare msg varchar(50);
+    
+	declare media double;
+    
+    
+	if(0 >= n1 <=100 and 0>=n2<=100 and 0>=n3<=100) then 
+		
+        
+		set media = n1*0.2 + n2*0.3 + n3*0.5;
+        
+		if (media >= 50) then set msg = 'Aluno aprovado';
+        
+		else set msg = 'Aluno reprovado';
+ 
+		end if;       
+	
+	else set msg = 'Valores fora da faixa';
+ 
+	end if;
+   
+    
+
+RETURN 1;
+
+END
